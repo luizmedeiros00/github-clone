@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <lista-repositorios :repos="repos" />
+    <v-container fluid>
+      <lista-repositorios :repos="repos" />
+    </v-container>
   </div>
 </template>
 

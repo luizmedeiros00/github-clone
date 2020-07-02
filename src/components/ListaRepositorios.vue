@@ -1,14 +1,22 @@
 <template>
   <div>
-    <ul>
-      <li v-for="(item, key) in repos" :key="key">
-        {{item.name}} <br>
-        <strong>{{item.description}}</strong>
-      </li>
-    </ul>
+      <v-col
+        v-for="(item, key) in repos"
+        :key="key"
+        cols="12"
+        md="3"
+        sm="12"
+      >
+        <card-component
+          :title="item.name"
+          :subtitle="item.description"
+        />
+      </v-col>
   </div>
 </template>
 <script>
+import CardComponent from './CardComponent.vue';
+
 export default {
   name: 'ListaRepositorios',
   props: {
@@ -16,6 +24,9 @@ export default {
       type: Array,
       default: () => [],
     },
+  },
+  components: {
+    CardComponent,
   },
 };
 </script>
