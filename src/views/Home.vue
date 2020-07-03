@@ -3,25 +3,42 @@
     <v-container fluid>
       <info-repositorio :repositorio="repositorio" />
       <v-divider />
-
-      <v-col
-        cols="12"
-        md="6"
+      <v-row>
+        <v-col
+          cols="12"
+          md="7"
+        >
+          <v-card flat>
+            <v-card-title>
+              Lista de Repositórios <v-chip class="ml-3">{{repositorio.public_repos}}</v-chip>
+            </v-card-title>
+            <lista-repositorios :repos="listaRepos" />
+          </v-card>
+          <v-card-actions class="text-center">
+            <v-pagination
+              @input="onLoadListaRepositorios($event)"
+              v-model="page"
+              :length="6"
+            ></v-pagination>
+          </v-card-actions>
+        </v-col>
+        <v-col
+          cols="12"
+          md="4"
+        >
+          <div class="d-flex flex-column mb-6">
+      <v-card
+        v-for="n in 3"
+        :key="n"
+        class="pa-2"
+        outlined
+        tile
       >
-        <v-card flat>
-          <v-card-title>
-            Lista de Repositórios <v-chip class="ml-3">{{repositorio.public_repos}}</v-chip>
-          </v-card-title>
-          <lista-repositorios :repos="listaRepos" />
-        </v-card>
-        <v-card-actions class="text-center">
-          <v-pagination
-            @input="onLoadListaRepositorios($event)"
-            v-model="page"
-            :length="6"
-          ></v-pagination>
-        </v-card-actions>
-      </v-col>
+        Flex item {{ n }}
+      </v-card>
+    </div>
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>
