@@ -21,7 +21,7 @@
                 dense
                 label="Procurar um repositório"
                 append-outer-icon="mdi-magnify"
-                @click:append-outer="teste(find)"
+                @click:append-outer="onFindRepositorio(find)"
               />
             </v-col>
             <lista-repositorios :repos="listaRepos" />
@@ -97,7 +97,7 @@ export default {
       const data = await this.RepositorioService.list(this.users, this.page);
       this.listaRepos = [...data];
     },
-    teste(find) {
+    onFindRepositorio(find) {
       console.log(find);
     },
   },

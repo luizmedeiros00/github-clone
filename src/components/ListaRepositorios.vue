@@ -15,29 +15,23 @@
             small
           >{{topic}}</v-chip>
         </v-chip-group>
-        <!-- <v-item-group multiple>
-          <v-item>
-            Language: {{item.language}}
-          </v-item>
-          <v-item v-if="item.license && item.license.spdx_id !== 'NOASSERTION'">
-            License: {{item.license.spdx_id}}
-          </v-item>
-          <v-item>
-            <v-icon>info</v-icon> {{item.stargazers_count}}
-          </v-item>
-          <v-item>
-            Issues: {{item.open_issues_count}}
-          </v-item>
-          <v-item>
-            Ultima Atualização: {{item.updated_at}}
-          </v-item>
-        </v-item-group> -->
+
+        <lista-component
+          :values="values"
+          :items="item"
+        >
+          <v-col>
+            Última atualização {{item.updated_at | dateFilter}}
+          </v-col>
+        </lista-component>
+
       </card-component>
     </v-col>
   </div>
 </template>
 <script>
 import CardComponent from './CardComponent.vue';
+import ListaComponent from './ListaComponent.vue';
 
 export default {
   name: 'ListaRepositorios',
@@ -49,6 +43,17 @@ export default {
   },
   components: {
     CardComponent,
+    ListaComponent,
   },
+  data() {
+    return {
+      values: [
+        { value: 'language' },
+        { value: 'stargazers_count', icon: 'mdi-star' },
+        { value: 'open_issues_count', icon: 'mdi-information-outline' },
+      ],
+    };
+  },
+
 };
 </script>
