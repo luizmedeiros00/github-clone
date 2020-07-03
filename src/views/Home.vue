@@ -26,7 +26,7 @@
             </v-col>
             <lista-repositorios :repos="listaRepos" />
           </v-card>
-          <v-card-actions class="text-center">
+          <v-card-actions>
             <v-pagination
               v-if="loaded"
               @input="onLoadListaRepositorios($event)"
