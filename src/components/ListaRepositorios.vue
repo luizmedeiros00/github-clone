@@ -3,9 +3,6 @@
     <v-col
       v-for="(item, key) in repos"
       :key="key"
-      cols="12"
-      md="5"
-      sm="12"
     >
       <card-component
         :title="item.name"

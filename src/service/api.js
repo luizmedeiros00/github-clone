@@ -6,9 +6,9 @@ export default class API {
     this.http = http;
   }
 
-  list = async ($username) => {
+  list = async ($username, page) => {
     try {
-      const response = await http.get(`${this.api}/${$username}/repos`);
+      const response = await http.get(`${this.api}/${$username}/repos?page=${page}`);
       return response.data;
     } catch (error) {
       return error;
