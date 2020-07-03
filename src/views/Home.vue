@@ -42,7 +42,6 @@ export default {
     },
   },
   created() {
-    console.log(this.$route.params.users);
     this.onLoadInfoRepositorio();
     this.onLoadListaRepositorios();
   },
