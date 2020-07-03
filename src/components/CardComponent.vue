@@ -2,6 +2,10 @@
   <v-card>
     <v-card-title>{{title}}</v-card-title>
     <v-card-subtitle>{{subtitle}}</v-card-subtitle>
+    <v-card-text>
+
+      <slot />
+    </v-card-text>
   </v-card>
 </template>
 <script>
