@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <v-container fluid>
-      <lista-repositorios :repos="repos" />
+      <info-repositorio :repositorio="repositorio" />
+      <lista-repositorios :repos="listaRepos" />
     </v-container>
   </div>
 </template>
@@ -9,26 +10,41 @@
 <script>
 import RepositorioService from '@/service/repositorio/RepositorioService';
 import ListaRepositorios from '@/components/ListaRepositorios.vue';
+import InfoRepositorio from '@/components/InfoRepositorio.vue';
 
 export default {
   name: 'Home',
+  props: {
+    users: {
+      type: String,
+      default: 'camunda',
+    },
+  },
   components: {
     ListaRepositorios,
+    InfoRepositorio,
   },
   data() {
     return {
       RepositorioService: new RepositorioService(),
-      repos: [],
+      repositorio: {},
+      listaRepos: [],
     };
   },
   methods: {
-    async onLoadRepositorio() {
-      const data = await this.RepositorioService.show('camunda');
-      this.repos = [...data];
+    async onLoadInfoRepositorio() {
+      const data = await this.RepositorioService.show(this.users);
+      this.repositorio = { ...data };
+    },
+    async onLoadListaRepositorios() {
+      const data = await this.RepositorioService.list(this.users);
+      this.listaRepos = [...data];
     },
   },
   created() {
-    this.onLoadRepositorio();
+    console.log(this.$route.params.users);
+    this.onLoadInfoRepositorio();
+    this.onLoadListaRepositorios();
   },
 };
 </script>

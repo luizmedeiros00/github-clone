@@ -18,7 +18,7 @@
             small
           >{{topic}}</v-chip>
         </v-chip-group>
-        <v-item-group multiple>
+        <!-- <v-item-group multiple>
           <v-item>
             Language: {{item.language}}
           </v-item>
@@ -34,7 +34,7 @@
           <v-item>
             Ultima Atualização: {{item.updated_at}}
           </v-item>
-        </v-item-group>
+        </v-item-group> -->
       </card-component>
     </v-col>
   </div>
